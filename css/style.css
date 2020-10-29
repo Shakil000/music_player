@@ -11,6 +11,27 @@ html{
     font-size: 62.5%;
     font-family: "Jost",sans-serif;
 }
+.name , .name2{
+    margin: auto;
+    display: flex;
+    align-items:center;
+    color:red;
+    font-size: 50px;
+    
+}
+.name2{
+    margin: auto;
+    display: flex;
+    align-items:center;
+    color:red;
+    font-size: 30px;
+    
+}
+.color{
+    color: green;
+    font-style: italic;
+    
+}
 .main_div{
     width: 100vw;
     height: 100vh;
