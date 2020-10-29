@@ -92,6 +92,19 @@ img{
     box-shadow: 0 1rem 2rem 2.2rem rgba(0,0,0,0.4);
 }
 
+/* image animation*/
+.anime{
+    animation: rotatePlayer 3s linear infinite;
+}
+
+@keyframes rotatePlayer{
+    from{
+        transform:rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
 /*progress*/
 .progressbar_container{
     width: 100%;

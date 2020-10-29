@@ -10,8 +10,8 @@
 <body>
     <div class="main_div">
         <div class="music_container">
-            <h2 id="title">Shakil Hasan</h2>
-            <h3 id="artist">Music Player</h3>
+            <h2 id="title">Bechalor Song</h2>
+            <h3 id="artist">Bangladesh</h3>
             <div class="img_container">
                 <img src="image/a.jpg" alt="">
             </div>
@@ -29,15 +29,15 @@
             </div>
             <!--controls-->
             <div class="music_controls">
-                <i class="fas fa-fast-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
                 <i class="fas fa-play main_button" id="play" title="Play"></i>
-                <i class="fas fa-fast-forward" id="next" title="Next"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
             </div>
         </div>
     </div>
     <script>
         const music = document.querySelector("audio");
-        const img = document.getElementById("img");
+        const img = document.querySelector("img");
         const play = document.getElementById("play");
         const artist = document.getElementById("artist");
         const title = document.getElementById("title");
@@ -45,6 +45,9 @@
         const next = document.getElementById("next");
 
         let progress = document.getElementById("progress");
+        let total_duration = document.getElementById("duration");
+        let current_time = document.getElementById("current_time");
+        const progress_div = document.getElementById("progress_div");
 
         const songs = [
             {
@@ -121,8 +124,42 @@
 
             progress.style.width = `${progress_time}%`;
 
-        } );
-      
+//music duration
+            let min_duration = Math.floor(duration / 60);
+            let sec_duration = Math.floor(duration % 60);
+
+            let tot_duration = `${min_duration}:${sec_duration}`;
+             if(duration){
+                total_duration.textContent = `${tot_duration}`;
+             }
+            
+
+            //music current duration
+            let min_currentTime = Math.floor(currentTime / 60);
+            let sec_currentTime = Math.floor(currentTime % 60);
+
+            
+            if(sec_currentTime < 10){
+
+             sec_currentTime = `0${sec_currentTime}`;
+            }
+            let tot_currentTime = `${min_currentTime}:${sec_currentTime}`;
+                current_time.textContent = `${tot_currentTime}`;
+        
+        });
+//onclickfunction
+        progress_div.addEventListener("click" , (event) =>{
+            console.log(event);
+              const { duration } = music;
+            let move_progress = 
+            (event.offsetX / event.srcElement.clientWidth)*duration;
+            music.currentTime = move_progress;
+
+        });
+        //auto next song 
+      music.addEventListener("ended" , nextSong);
+
+
       next.addEventListener("click" , nextSong);
       prev.addEventListener("click" , prevSong);
  
